@@ -8,9 +8,12 @@ res.json({message:'fhschat-appapiworks...'});
 router.get('/history',function(req,res,next){
 res.send(chatHistory);
 });
+
+// hallo
 router.post('/history',function(req,res,next){
 var date= new Date();
 chatHistory.push({message:req.body.message,nickname:req.body.nickname,date:date});
 res.json({message:'Historycreated!'});
 });
+
 module.exports=router;
