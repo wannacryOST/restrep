@@ -13,7 +13,9 @@ router.get('/history',function(req,res,next){
 
 router.post('/history',function(req,res,next){
     var date= new Date();
-    chatHistory.push({message: req.body.message,nickname: req.body.nickname, timestamp: req.body.timestamp, type: req.body.type, showNickname: req.body.showNickname});
+    let showNickname = true;
+    if (chatHistory[chatHistory.length - 1].nickname === req.body.nickname) showNickname = false
+    chatHistory.push({message: req.body.message, nickname: req.body.nickname, timestamp: req.body.timestamp, type: req.body.type, showNickname: showNickname});
     res.json({message:'Historycreated!'});
 });
 
