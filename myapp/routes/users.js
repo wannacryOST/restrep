@@ -13,7 +13,7 @@ router.get('/history',function(req,res,next){
 
 router.post('/history',function(req,res,next){
     var date= new Date();
-    chatHistory.push({message: req.body.message,nickname: req.body.nickname,timestamp: req.body.date, type: req.body.type, showNickname: req.body.showNickname});
+    chatHistory.push({message: req.body.message,nickname: req.body.nickname, timestamp: req.body.timestamp, type: req.body.type, showNickname: req.body.showNickname});
     res.json({message:'Historycreated!'});
 });
 
