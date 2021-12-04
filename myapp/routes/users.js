@@ -4,17 +4,17 @@ var chatHistory=[];
 var nicknames=[];
 
 router.get('/',function(req,res,next){
-res.json({message:'fhschat-appapiworks...'});
+    res.json({message:'fhschat-appapiworks...'});
 });
 
 router.get('/history',function(req,res,next){
-res.send(chatHistory);
+    res.send(chatHistory);
 });
 
 router.post('/history',function(req,res,next){
-var date= new Date();
-chatHistory.push({message:req.body.message,nickname:req.body.nickname,date:date});
-res.json({message:'Historycreated!'});
+    var date= new Date();
+    chatHistory.push({message: req.body.message,nickname: req.body.nickname,timestamp: req.body.date, type: req.body.type, showNickname: req.body.showNickname});
+    res.json({message:'Historycreated!'});
 });
 
 module.exports=router;
