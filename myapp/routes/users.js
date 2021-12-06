@@ -17,6 +17,10 @@ router.post('/history',function(req,res,next){
     if (chatHistory.length > 0 && chatHistory[chatHistory.length - 1].nickname === req.body.nickname && chatHistory[chatHistory.length - 1].type === 'message') showNickname = false
     chatHistory.push({message: req.body.message, nickname: req.body.nickname, timestamp: req.body.timestamp, type: req.body.type, showNickname: showNickname});
     res.json({message:'Historycreated!'});
+    if (this.chatHistory.length > 20) {
+        this.chatHistory.shift();
+    }
+    console.log(chatHistory);
 });
 
 module.exports=router;
