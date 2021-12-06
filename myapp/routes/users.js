@@ -16,6 +16,7 @@ router.post('/history',function(req,res,next){
     let showNickname = true;
     if (chatHistory.length > 0 && chatHistory[chatHistory.length - 1].nickname === req.body.nickname && chatHistory[chatHistory.length - 1].type === 'message') showNickname = false
     chatHistory.push({message: req.body.message, nickname: req.body.nickname, timestamp: req.body.timestamp, type: req.body.type, showNickname: showNickname});
+    //das chatHistory Array wird gekürzt wenn es mehr als 20 Objekte beinhaltet.
     if (chatHistory.length > 20) {
       chatHistory.shift();
     };
