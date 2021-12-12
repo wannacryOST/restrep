@@ -16,6 +16,10 @@ function addToHistory(message){
     let showNickname = true;
     if (chatHistory.length > 0 && chatHistory[chatHistory.length - 1].nickname === message.nickname && chatHistory[chatHistory.length - 1].type === 'message') showNickname = false
     chatHistory.push({message: message.message, nickname: message.nickname, timestamp: message.timestamp, type: message.type, showNickname: showNickname, userId: message.userId});
+    //das chatHistory Array wird gekürzt wenn es mehr als 20 Objekte beinhaltet.
+    if (chatHistory.length > 999) {
+        chatHistory.shift();
+    };
 }
 function handleUserChange(message){
     if (message.type == "exitUser"){
